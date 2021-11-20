@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTblagendaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTblagendaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{tblagendaController.selected.id}" title="#{bundle.CreateTblagendaTitle_id}" required="true" requiredMessage="#{bundle.CreateTblagendaRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateTblagendaLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{tblagendaController.selected.fecha}" title="#{bundle.CreateTblagendaTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTblagendaLabel_horaInicio}" for="horaInicio" />
+                    <h:inputText id="horaInicio" value="#{tblagendaController.selected.horaInicio}" title="#{bundle.CreateTblagendaTitle_horaInicio}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTblagendaLabel_horaFin}" for="horaFin" />
+                    <h:inputText id="horaFin" value="#{tblagendaController.selected.horaFin}" title="#{bundle.CreateTblagendaTitle_horaFin}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTblagendaLabel_telefonoPaciente}" for="telefonoPaciente" />
+                    <h:inputText id="telefonoPaciente" value="#{tblagendaController.selected.telefonoPaciente}" title="#{bundle.CreateTblagendaTitle_telefonoPaciente}" />
+                    <h:outputLabel value="#{bundle.CreateTblagendaLabel_correoPaciente}" for="correoPaciente" />
+                    <h:inputText id="correoPaciente" value="#{tblagendaController.selected.correoPaciente}" title="#{bundle.CreateTblagendaTitle_correoPaciente}" />
+                    <h:outputLabel value="#{bundle.CreateTblagendaLabel_FKIdtblmedico}" for="FKIdtblmedico" />
+                    <h:selectOneMenu id="FKIdtblmedico" value="#{tblagendaController.selected.FKIdtblmedico}" title="#{bundle.CreateTblagendaTitle_FKIdtblmedico}" required="true" requiredMessage="#{bundle.CreateTblagendaRequiredMessage_FKIdtblmedico}">
+                        <f:selectItems value="#{tblmedicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTblagendaLabel_FKIdtblusuariopaciente}" for="FKIdtblusuariopaciente" />
+                    <h:selectOneMenu id="FKIdtblusuariopaciente" value="#{tblagendaController.selected.FKIdtblusuariopaciente}" title="#{bundle.CreateTblagendaTitle_FKIdtblusuariopaciente}" required="true" requiredMessage="#{bundle.CreateTblagendaRequiredMessage_FKIdtblusuariopaciente}">
+                        <f:selectItems value="#{tblusuariopacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblagendaController.create}" value="#{bundle.CreateTblagendaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tblagendaController.prepareList}" value="#{bundle.CreateTblagendaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTblagendaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

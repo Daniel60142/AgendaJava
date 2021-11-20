@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTblusuariopacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTblusuariopacienteLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{tblusuariopacienteController.selected.id}" title="#{bundle.CreateTblusuariopacienteTitle_id}" required="true" requiredMessage="#{bundle.CreateTblusuariopacienteRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateTblusuariopacienteLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tblusuariopacienteController.selected.nombre}" title="#{bundle.CreateTblusuariopacienteTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreateTblusuariopacienteLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{tblusuariopacienteController.selected.apellido}" title="#{bundle.CreateTblusuariopacienteTitle_apellido}" />
+                    <h:outputLabel value="#{bundle.CreateTblusuariopacienteLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{tblusuariopacienteController.selected.correo}" title="#{bundle.CreateTblusuariopacienteTitle_correo}" />
+                    <h:outputLabel value="#{bundle.CreateTblusuariopacienteLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{tblusuariopacienteController.selected.password}" title="#{bundle.CreateTblusuariopacienteTitle_password}" />
+                    <h:outputLabel value="#{bundle.CreateTblusuariopacienteLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{tblusuariopacienteController.selected.telefono}" title="#{bundle.CreateTblusuariopacienteTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.CreateTblusuariopacienteLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{tblusuariopacienteController.selected.direccion}" title="#{bundle.CreateTblusuariopacienteTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.CreateTblusuariopacienteLabel_fechaCreacion}" for="fechaCreacion" />
+                    <h:inputText id="fechaCreacion" value="#{tblusuariopacienteController.selected.fechaCreacion}" title="#{bundle.CreateTblusuariopacienteTitle_fechaCreacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTblusuariopacienteLabel_fechaUltimoIngreso}" for="fechaUltimoIngreso" />
+                    <h:inputText id="fechaUltimoIngreso" value="#{tblusuariopacienteController.selected.fechaUltimoIngreso}" title="#{bundle.CreateTblusuariopacienteTitle_fechaUltimoIngreso}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblusuariopacienteController.create}" value="#{bundle.CreateTblusuariopacienteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tblusuariopacienteController.prepareList}" value="#{bundle.CreateTblusuariopacienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTblusuariopacienteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
